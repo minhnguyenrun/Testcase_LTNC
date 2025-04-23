@@ -1827,141 +1827,141 @@ class TestSymbolTable(unittest.TestCase):
         expected = ["success", "success", "success", "success", "success", "success", "x//1 y//2 z//2"]
         self.assertTrue(TestUtils.check(input, expected, 10359))
 
-    """=====================================================PRINT======================================================"""
+    """=====================================================RPRINT======================================================"""
 
     def test_360(self):
-        input = ["PRINT"]
+        input = ["RPRINT"]
         expected = [""]
         self.assertTrue(TestUtils.check(input, expected, 10360))
 
     def test_361(self):
-        input = ["PRINT "]
-        expected = ["Invalid: PRINT "]
+        input = ["RPRINT "]
+        expected = ["Invalid: RPRINT "]
         self.assertTrue(TestUtils.check(input, expected, 10361))
 
     def test_362(self):
-        input = [" PRINT"]
-        expected = ["Invalid:  PRINT"]
+        input = [" RPRINT"]
+        expected = ["Invalid:  RPRINT"]
         self.assertTrue(TestUtils.check(input, expected, 10362))
 
     def test_363(self):
-        input = ["PRINT  "]
-        expected = ["Invalid: PRINT  "]
+        input = ["RPRINT  "]
+        expected = ["Invalid: RPRINT  "]
         self.assertTrue(TestUtils.check(input, expected, 10363))
 
     def test_364(self):
-        input = ["PRINT number"]
-        expected = ["Invalid: PRINT number"]
+        input = ["RPRINT number"]
+        expected = ["Invalid: RPRINT number"]
         self.assertTrue(TestUtils.check(input, expected, 10364))
 
     def test_365(self):
-        input = ["INSERT x number", "PRINT x"]
-        expected = ["Invalid: PRINT x"]
+        input = ["INSERT x number", "RPRINT x"]
+        expected = ["Invalid: RPRINT x"]
         self.assertTrue(TestUtils.check(input, expected, 10365))
 
     def test_366(self):
-        input = ["INSERT x number", "INSERT y number", "PRINT"]
-        expected = ["success", "success", "x//0 y//0"]
+        input = ["INSERT x number", "INSERT y number", "RPRINT"]
+        expected = ["success", "success", "y//0 x//0"]
         self.assertTrue(TestUtils.check(input, expected, 10366))
 
     def test_367(self):
-        input = ["BEGIN", "INSERT x string", "INSERT y string", "END", "PRINT"]
+        input = ["BEGIN", "INSERT x string", "INSERT y string", "END", "RPRINT"]
         expected = ["success", "success", ""]
         self.assertTrue(TestUtils.check(input, expected, 10367))
 
     def test_368(self):
-        input = ["BEGIN", "INSERT x string", "INSERT y string", "PRINT", "END"]
-        expected = ["success", "success", "x//1 y//1"]
+        input = ["BEGIN", "INSERT x string", "INSERT y string", "RPRINT", "END"]
+        expected = ["success", "success", "y//1 x//1"]
         self.assertTrue(TestUtils.check(input, expected, 10368))
 
     def test_369(self):
-        input = ["INSERT x string", "INSERT y string", "BEGIN", "INSERT x string", "INSERT y string", "PRINT", "END"]
-        expected = ["success", "success", "success", "success", "x//1 y//1"]
+        input = ["INSERT x string", "INSERT y string", "BEGIN", "INSERT x string", "INSERT y string", "RPRINT", "END"]
+        expected = ["success", "success", "success", "success", "y//1 x//1"]
         self.assertTrue(TestUtils.check(input, expected, 10369))
 
     def test_370(self):
-        input = ["INSERT x string", "INSERT y string", "BEGIN", "INSERT x string", "INSERT y string", "END", "PRINT"]
-        expected = ["success", "success", "success", "success","x//0 y//0"]
+        input = ["INSERT x string", "INSERT y string", "BEGIN", "INSERT x string", "INSERT y string", "END", "RPRINT"]
+        expected = ["success", "success", "success", "success","y//0 x//0"]
         self.assertTrue(TestUtils.check(input, expected, 10370))
 
     def test_371(self):
-        input = ["INSERT x string", "INSERT y string", "BEGIN", "INSERT x string", "PRINT", "END"]
-        expected = ["success", "success", "success", "y//0 x//1"]
+        input = ["INSERT x string", "INSERT y string", "BEGIN", "INSERT x string", "RPRINT", "END"]
+        expected = ["success", "success", "success", "x//1 y//0"]
         self.assertTrue(TestUtils.check(input, expected, 10371))
 
     def test_372(self):
-        input = ["INSERT y string", "BEGIN", "INSERT x string", "INSERT y string", "END", "PRINT"]
+        input = ["INSERT y string", "BEGIN", "INSERT x string", "INSERT y string", "END", "RPRINT"]
         expected = ["success", "success", "success", "y//0"]
         self.assertTrue(TestUtils.check(input, expected, 10372))
 
     def test_373(self):
-        input = ["PRINT", "INSERT x string", "INSERT y string", "BEGIN", "INSERT x string", "INSERT y string", "END"]
+        input = ["RPRINT", "INSERT x string", "INSERT y string", "BEGIN", "INSERT x string", "INSERT y string", "END"]
         expected = ["", "success", "success", "success", "success"]
         self.assertTrue(TestUtils.check(input, expected, 10373))
 
     def test_374(self):
-        input = ["PRINT", "INSERT x string", "INSERT y string", "BEGIN", "INSERT x string", "INSERT y string", "END"]
+        input = ["RPRINT", "INSERT x string", "INSERT y string", "BEGIN", "INSERT x string", "INSERT y string", "END"]
         expected = ["", "success", "success", "success", "success"]
         self.assertTrue(TestUtils.check(input, expected, 10374))
 
     def test_375(self):
-        input = ["INSERT x string", "INSERT y string", "BEGIN", "BEGIN", "INSERT x string", "INSERT y string", "PRINT", "END", "INSERT x string", "INSERT y string", "END"]
-        expected = ["success", "success", "success", "success", "x//2 y//2", "success", "success"]
+        input = ["INSERT x string", "INSERT y string", "BEGIN", "BEGIN", "INSERT x string", "INSERT y string", "RPRINT", "END", "INSERT x string", "INSERT y string", "END"]
+        expected = ["success", "success", "success", "success", "y//2 x//2", "success", "success"]
         self.assertTrue(TestUtils.check(input, expected, 10375))
 
     def test_376(self):
-        input = ["INSERT x string", "INSERT y string", "BEGIN", "BEGIN", "INSERT x string", "INSERT y string", "END", "INSERT x string", "INSERT y string", "PRINT", "END"]
-        expected = ["success", "success", "success", "success", "success", "success", "x//1 y//1"]
+        input = ["INSERT x string", "INSERT y string", "BEGIN", "BEGIN", "INSERT x string", "INSERT y string", "END", "INSERT x string", "INSERT y string", "RPRINT", "END"]
+        expected = ["success", "success", "success", "success", "success", "success", "y//1 x//1"]
         self.assertTrue(TestUtils.check(input, expected, 10376))
 
     def test_377(self):
-        input = ["INSERT x string", "INSERT y string", "BEGIN", "BEGIN", "INSERT x string", "INSERT y string", "END", "INSERT x string", "INSERT y string", "END", "PRINT"]
-        expected = ["success", "success", "success", "success", "success", "success", "x//0 y//0"]
+        input = ["INSERT x string", "INSERT y string", "BEGIN", "BEGIN", "INSERT x string", "INSERT y string", "END", "INSERT x string", "INSERT y string", "END", "RPRINT"]
+        expected = ["success", "success", "success", "success", "success", "success", "y//0 x//0"]
         self.assertTrue(TestUtils.check(input, expected, 10377))
 
     def test_378(self):
-        input = ["INSERT x string", "INSERT y string", "BEGIN", "INSERT x string", "INSERT y string", "END", "BEGIN", "INSERT x string", "INSERT y string", "END", "PRINT"]
-        expected = ["success", "success", "success", "success", "success", "success", "x//0 y//0"]
+        input = ["INSERT x string", "INSERT y string", "BEGIN", "INSERT x string", "INSERT y string", "END", "BEGIN", "INSERT x string", "INSERT y string", "END", "RPRINT"]
+        expected = ["success", "success", "success", "success", "success", "success", "y//0 x//0"]
         self.assertTrue(TestUtils.check(input, expected, 10378))
 
     def test_379(self):
-        input = ["INSERT x string", "INSERT y string", "BEGIN", "INSERT x string", "INSERT y string", "END", "PRINT", "BEGIN", "INSERT x string", "INSERT y string", "END"]
-        expected = ["success", "success", "success", "success", "x//0 y//0", "success", "success", ]
+        input = ["INSERT x string", "INSERT y string", "BEGIN", "INSERT x string", "INSERT y string", "END", "RPRINT", "BEGIN", "INSERT x string", "INSERT y string", "END"]
+        expected = ["success", "success", "success", "success", "y//0 x//0", "success", "success", ]
         self.assertTrue(TestUtils.check(input, expected, 10379))
 
     def test_380(self):
-        input = ["INSERT y string", "BEGIN", "INSERT x string", "INSERT y string", "END", "INSERT x string", "BEGIN", "INSERT x string", "INSERT y string", "END", "PRINT"]
-        expected = ["success", "success", "success", "success", "success", "success", "y//0 x//0"]
+        input = ["INSERT y string", "BEGIN", "INSERT x string", "INSERT y string", "END", "INSERT x string", "BEGIN", "INSERT x string", "INSERT y string", "END", "RPRINT"]
+        expected = ["success", "success", "success", "success", "success", "success", "x//0 y//0"]
         self.assertTrue(TestUtils.check(input, expected, 10380))
 
     def test_381(self):
-        input = ["INSERT x string", "INSERT y string", "INSERT z string", "PRINT"]
-        expected = ["success", "success", "success", "x//0 y//0 z//0"]
+        input = ["INSERT x string", "INSERT y string", "INSERT z string", "RPRINT"]
+        expected = ["success", "success", "success", "z//0 y//0 x//0"]
         self.assertTrue(TestUtils.check(input, expected, 10381))
 
     def test_382(self):
-        input = ["INSERT x string", "INSERT y string", "BEGIN", "INSERT z string", "PRINT", "END"]
-        expected = ["success", "success", "success", "x//0 y//0 z//1"]
+        input = ["INSERT x string", "INSERT y string", "BEGIN", "INSERT z string", "RPRINT", "END"]
+        expected = ["success", "success", "success", "z//1 y//0 x//0"]
         self.assertTrue(TestUtils.check(input, expected, 10382))
 
     def test_383(self):
-        input = ["INSERT z string", "INSERT x string", "INSERT y string", "BEGIN", "INSERT z string", "PRINT", "END"]
-        expected = ["success", "success", "success", "success", "x//0 y//0 z//1"]
+        input = ["INSERT z string", "INSERT x string", "INSERT y string", "BEGIN", "INSERT z string", "RPRINT", "END"]
+        expected = ["success", "success", "success", "success", "z//1 y//0 x//0"]
         self.assertTrue(TestUtils.check(input, expected, 10383))
 
     def test_384(self):
-        input = ["INSERT z string", "INSERT x string", "INSERT y string", "BEGIN", "INSERT x string", "BEGIN", "INSERT z string", "PRINT", "END", "END"]
-        expected = ["success", "success", "success", "success", "success", "y//0 x//1 z//2"]
+        input = ["INSERT z string", "INSERT x string", "INSERT y string", "BEGIN", "INSERT x string", "BEGIN", "INSERT z string", "RPRINT", "END", "END"]
+        expected = ["success", "success", "success", "success", "success", "z//2 x//1 y//0"]
         self.assertTrue(TestUtils.check(input, expected, 10384))
 
     def test_385(self):
-        input = ["INSERT z string", "INSERT x string", "INSERT y string", "BEGIN", "INSERT x string", "BEGIN", "PRINT", "INSERT z string", "END", "END"]
-        expected = ["success", "success", "success", "success", "z//0 y//0 x//1", "success"]
+        input = ["INSERT z string", "INSERT x string", "INSERT y string", "BEGIN", "INSERT x string", "BEGIN", "RPRINT", "INSERT z string", "END", "END"]
+        expected = ["success", "success", "success", "success", "x//1 y//0 z//0", "success"]
         self.assertTrue(TestUtils.check(input, expected, 10385))
 
     def test_386(self):
-        input = ["INSERT z string", "INSERT x string", "INSERT y string", "BEGIN", "INSERT x string", "BEGIN", "INSERT y string", "INSERT z string", "PRINT", "END", "END"]
-        expected = ["success", "success", "success", "success", "success", "success", "x//1 y//2 z//2"]
+        input = ["INSERT z string", "INSERT x string", "INSERT y string", "BEGIN", "INSERT x string", "BEGIN", "INSERT y string", "INSERT z string", "RPRINT", "END", "END"]
+        expected = ["success", "success", "success", "success", "success", "success", "z//2 y//2 x//1"]
         self.assertTrue(TestUtils.check(input, expected, 10386))
 
     """=====================================================OTHER======================================================"""
