@@ -607,8 +607,8 @@ class TestSymbolTable(unittest.TestCase):
         self.assertTrue(TestUtils.check(input, expected, 10116))
 
     def test_117(self):
-        input = ["ASSIGN jennie 1"]
-        expected = ["Undeclared: ASSIGN jennie 1"]
+        input = ["INSERT jennie string", "ASSIGN jennie ''"]
+        expected = ["success", "success"]
         self.assertTrue(TestUtils.check(input, expected, 10117))
 
     def test_118(self):
