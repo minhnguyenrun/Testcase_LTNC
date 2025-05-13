@@ -537,8 +537,8 @@ class TestSymbolTable(unittest.TestCase):
         self.assertTrue(TestUtils.check(input, expected, 10102))
 
     def test_103(self):
-        input = ["INSERT x string", "INSERT y string", "ASSIGN x y"]
-        expected = ["success", "success", "success"]
+        input = ["INSERT x string", "INSERT y string", "ASSIGN x y", "ASSIGN x '"]
+        expected = ["Invalid: ASSIGN x '"]
         self.assertTrue(TestUtils.check(input, expected, 10103))
 
     def test_104(self):
